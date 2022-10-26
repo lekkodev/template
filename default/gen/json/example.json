@@ -1,0 +1,10 @@
+{
+  "key": "example",
+  "description": "example bool feature",
+  "tree": {
+    "default": {
+      "@type": "type.googleapis.com/google.protobuf.BoolValue",
+      "value": false
+    }
+  }
+}
