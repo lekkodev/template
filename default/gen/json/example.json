@@ -6,5 +6,6 @@
       "@type": "type.googleapis.com/google.protobuf.BoolValue",
       "value": false
     }
-  }
+  },
+  "type": "FEATURE_TYPE_BOOL"
 }
