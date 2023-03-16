@@ -1,5 +1,7 @@
 name: ci
-on: push
+on:
+  push:
+  merge_group:
 jobs:
   build:
     runs-on: ubuntu-latest
