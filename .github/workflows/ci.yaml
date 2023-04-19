@@ -4,7 +4,7 @@ on:
 jobs:
   verify:
     env:
-      apikey: ${{ secrets.LEKKO_DEVELOPER_APIKEY }}
+      apikey: ${{ secrets.MISSING_KEY }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
