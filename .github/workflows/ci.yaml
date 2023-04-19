@@ -1,11 +1,20 @@
-name: ci
+name: lekko-ci
 on:
   push:
-  merge_group:
 jobs:
-  build:
+  verify:
+    env:
+      apikey: ${{ secrets.LEKKO_DEVELOPER_APIKEY }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: bufbuild/buf-setup-action@v1
+        with:
+          github_token: ${{ secrets.MISSING_SECRET }}
       - uses: bufbuild/buf-lint-action@v1
+      - uses: lekkodev/lekko-setup-action@v1
+        if: env.apikey != ''
+        with:
+          apikey: ${{ env.apikey }}
+      - if: env.apikey != ''
+        run: lekko verify
