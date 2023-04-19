@@ -4,13 +4,13 @@ on:
 jobs:
   verify:
     env:
-      apikey: ${{ secrets.MISSING_KEY }}
+      apikey: ${{ secrets.LEKKO_DEVELOPER_APIKEY }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: bufbuild/buf-setup-action@v1
         with:
-          github_token: ${{ secrets.MISSING_SECRET }}
+          github_token: ${{ secrets.LEKKO_CI_GITHUB_PAT }}
       - uses: bufbuild/buf-lint-action@v1
       - uses: lekkodev/lekko-setup-action@v1
         if: env.apikey != ''
