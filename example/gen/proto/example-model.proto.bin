@@ -1,0 +1,20 @@
+
+example-model9Example lekko that controls which LLM users interact withê
+L
+/type.googleapis.com/google.protobuf.StringValue
+openai-chatgpt3.5-turbos
+is_admin == trueK
+/type.googleapis.com/google.protobuf.StringValue
+anthropic-claude3-opus*
+
+is_admin ¤
+&plan == "team" or plan == "enterprise"F
+/type.googleapis.com/google.protobuf.StringValue
+openai-chatgpt4-o*20
+
+
+planteam
+
+
+plan
+enterprise 

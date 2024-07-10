@@ -1,0 +1,8 @@
+
+example-flag9Example feature flag, enabled in development environments˜
+/
+-type.googleapis.com/google.protobuf.BoolValuee
+env == "development"3
+-type.googleapis.com/google.protobuf.BoolValue*
+
+envdevelopment 
