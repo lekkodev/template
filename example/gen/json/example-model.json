@@ -1,0 +1,55 @@
+{
+  "key": "example-model",
+  "description": "Example lekko that controls which LLM users interact with",
+  "tree": {
+    "default": {
+      "@type": "type.googleapis.com/google.protobuf.StringValue",
+      "value": "openai-chatgpt3.5-turbo"
+    },
+    "constraints": [
+      {
+        "rule": "is_admin == true",
+        "value": {
+          "@type": "type.googleapis.com/google.protobuf.StringValue",
+          "value": "anthropic-claude3-opus"
+        },
+        "ruleAstNew": {
+          "atom": {
+            "contextKey": "is_admin",
+            "comparisonValue": true,
+            "comparisonOperator": "COMPARISON_OPERATOR_EQUALS"
+          }
+        }
+      },
+      {
+        "rule": "plan == \"team\" or plan == \"enterprise\"",
+        "value": {
+          "@type": "type.googleapis.com/google.protobuf.StringValue",
+          "value": "openai-chatgpt4-o"
+        },
+        "ruleAstNew": {
+          "logicalExpression": {
+            "rules": [
+              {
+                "atom": {
+                  "contextKey": "plan",
+                  "comparisonValue": "team",
+                  "comparisonOperator": "COMPARISON_OPERATOR_EQUALS"
+                }
+              },
+              {
+                "atom": {
+                  "contextKey": "plan",
+                  "comparisonValue": "enterprise",
+                  "comparisonOperator": "COMPARISON_OPERATOR_EQUALS"
+                }
+              }
+            ],
+            "logicalOperator": "LOGICAL_OPERATOR_OR"
+          }
+        }
+      }
+    ]
+  },
+  "type": "FEATURE_TYPE_STRING"
+}

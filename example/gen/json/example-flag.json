@@ -1,0 +1,27 @@
+{
+  "key": "example-flag",
+  "description": "Example feature flag, enabled in development environments",
+  "tree": {
+    "default": {
+      "@type": "type.googleapis.com/google.protobuf.BoolValue",
+      "value": false
+    },
+    "constraints": [
+      {
+        "rule": "env == \"development\"",
+        "value": {
+          "@type": "type.googleapis.com/google.protobuf.BoolValue",
+          "value": true
+        },
+        "ruleAstNew": {
+          "atom": {
+            "contextKey": "env",
+            "comparisonValue": "development",
+            "comparisonOperator": "COMPARISON_OPERATOR_EQUALS"
+          }
+        }
+      }
+    ]
+  },
+  "type": "FEATURE_TYPE_BOOL"
+}

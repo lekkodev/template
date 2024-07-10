@@ -1,0 +1,69 @@
+{
+  "key": "example-sample-rate",
+  "description": "Example lekko that controls sampling rate based on contextual factors",
+  "tree": {
+    "default": {
+      "@type": "type.googleapis.com/google.protobuf.DoubleValue",
+      "value": 0.75
+    },
+    "constraints": [
+      {
+        "rule": "env == \"staging\"",
+        "value": {
+          "@type": "type.googleapis.com/google.protobuf.DoubleValue",
+          "value": 1
+        },
+        "ruleAstNew": {
+          "atom": {
+            "contextKey": "env",
+            "comparisonValue": "staging",
+            "comparisonOperator": "COMPARISON_OPERATOR_EQUALS"
+          }
+        }
+      },
+      {
+        "rule": "msg_type == \"critical\"",
+        "value": {
+          "@type": "type.googleapis.com/google.protobuf.DoubleValue",
+          "value": 1
+        },
+        "ruleAstNew": {
+          "atom": {
+            "contextKey": "msg_type",
+            "comparisonValue": "critical",
+            "comparisonOperator": "COMPARISON_OPERATOR_EQUALS"
+          }
+        }
+      },
+      {
+        "rule": "load > 0.75 or throttle == true",
+        "value": {
+          "@type": "type.googleapis.com/google.protobuf.DoubleValue",
+          "value": 0.3
+        },
+        "ruleAstNew": {
+          "logicalExpression": {
+            "rules": [
+              {
+                "atom": {
+                  "contextKey": "load",
+                  "comparisonValue": 0.75,
+                  "comparisonOperator": "COMPARISON_OPERATOR_GREATER_THAN"
+                }
+              },
+              {
+                "atom": {
+                  "contextKey": "throttle",
+                  "comparisonValue": true,
+                  "comparisonOperator": "COMPARISON_OPERATOR_EQUALS"
+                }
+              }
+            ],
+            "logicalOperator": "LOGICAL_OPERATOR_OR"
+          }
+        }
+      }
+    ]
+  },
+  "type": "FEATURE_TYPE_FLOAT"
+}
